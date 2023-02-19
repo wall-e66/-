@@ -1,0 +1,60 @@
+1.HTML方式（可隐藏跳转后网址）
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>Panda社区</title>
+<frameset framespacing="0" border="0" rows="0" frameborder="0">
+<frame name="main" src="http://www.httple.net/" scrolling="auto" noresize></frameset>
+</head>
+<body></body>
+</html>
+
+2.HTML跳转
+<meta http-equiv="refresh" content="0; url=http://www.httple.net">
+
+3.PHP跳转
+<?php
+header("HTTP/1.1 301 Moved Permanently");
+header("Location: http://www.httple.net");
+exit();
+?>
+
+4.JavaScript跳转
+<script language="javascript">
+top.location='http://www.httple.net';
+</script>
+
+5.Apache(301)跳转
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule (.*) http://www.httple.net$1 [R=301,L]
+
+6.ASP跳转
+<%
+Response.Status="301 Moved Permanently"
+Response.AddHeader "Location","http://www.httple.net"
+Response.End
+%>
+
+7.ASP.NET(301)跳转
+<%@ Page Language="C#" %>
+<script runat="server">
+protected void Page_Load(object sender, EventArgs e)
+{
+HttpContext.Current.Response.StatusCode = 301;
+HttpContext.Current.Response.Status = "301 Moved Permanently";
+HttpContext.Current.Response.AddHeader("Location", http://www.httple.net);
+}
+
+8.Perl跳转
+$q = new CGI;
+print $q->redirect("http://www.httple.net");
+
+9.Pyton跳转
+from django import http
+def view(request):
+return http.HttpResponseRedirect('http://www.httple.net')
+
+1.在头部加⼊这样的⼀⾏代码可以适配手机端：
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
